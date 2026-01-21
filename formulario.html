@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario por Pasos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="formulario">
+  <div class="form-step active" id="step1">
+    <h2>Matricula CEPRE-UNU 2025-I</h2>
+    <p>FORMULARIO DE MATRICULA</p>
+    <label>Veces que estudió en el CEPRE-UNU anteriormente</label><br>
+        <input type="text" name="Vestudio" id="Vestudio" pattern="\d*" title="Solo se permiten números" required 
+        oninput="this.value = this.value.replace(/[^0-9]/g, '');"><br>
+        <small>Solo se permiten números.</small><br>
+
+        <br><label>Veces que postuló a la UNU anteriormente</label><br>
+        <input type="text" name="Vpostulo" id="Vpostulo" pattern="\d*" title="Solo se permiten números" required
+        oninput="this.value = this.value.replace(/[^0-9]/g, '');"><br>
+        <small>Solo se permiten números.</small><br>
+
+        <br><label>Veces que postuló a otras universidades anteriormente</label><br>
+        <input type="text" name="VpostuloOtras" id="VpostuloOtras" pattern="\d*" title="Solo se permiten números" required
+        oninput="this.value = this.value.replace(/[^0-9]/g, '');"><br>
+        <small>Solo se permiten números.</small><br>
+
+        
+        <br><label>SEDE:</label>
+        <select id="sede" name="sede" required>
+            <option value="">elegir</option>
+            <option value="PRINCIPAL (PUCALLPA)">PRINCIPAL (PUCALLPA)</option>
+        </select><br>
+
+        <label>PROCESO:</label>
+        <select id="proceso" name="proceso" required>
+            <option value="">elegir</option>
+            <option value="2025-II">2025-II</option>
+        </select><br><br>
+
+        <label>Modalidad de pago:</label>
+        <select id="modPago" name="modPago" required>
+            <option value="">elegir</option>
+            <option value="CUOTA ÚNICA DE S/.500">CUOTA ÚNICA DE S/.500</option>
+            <option value="FRACCIONADO EN DOS CUOTAS DE S/.275">FRACCIONADO EN DOS CUOTAS DE S/.275</option>
+            <option value="PARENTESCO UNU">PARENTESCO UNU</option>
+            <option value="BECA ACADÉMICA">BECA ACADÉMICA</option>
+            <option value="MEDIA BECA DE ESTUDIOS">MEDIA BECA DE ESTUDIOS</option>
+        </select><br>
+
+        <label>Prentesco UNU / N° Resolución</label><br>
+        <label>INGRESAR NOMBRE DEL PARIENTE</label> 
+        <input type="text" name="nombreParent" id="nombreParent" required><br>
+
+        <!-- PAGO_01 -->
+        <div id="contenedorPagos">
+          <!-- PAGO_01 (Sección inicial de pago) -->
+          <div class="pago-section">
+            <h5>PAGO_01</h5>
+            <label>Ubicación del pago - PAGO_01:</label>
+            <select id="ubiPago_1" name="ubiPago_1" required>
+              <option value="">elegir</option>
+              <option value="RECAUDACIÓN BBVA N°13248">RECAUDACIÓN BBVA N°13248</option>
+              <option value="ADMISIÓN UNU">ADMISIÓN UNU</option>
+              <option value="POSGRADO UNU">POSGRADO UNU</option>
+              <option value="CONVENIO MUNICIPALIDAD">CONVENIO MUNICIPALIDAD</option>
+            </select><br>
+      
+            <label>Nro. de Operación - PAGO_01</label>
+            <input type="text" name="nroOpera_1" id="nroOpera_1" pattern="\d*" title="Solo se permiten números" required><br>
+      
+            <label>Monto de pago - PAGO_01</label>
+            <input type="text" name="montoPago_1" id="montoPago_1" pattern="\d*" title="Solo se permiten números" required><br>
+      
+            <label>Fecha de pago - PAGO_01</label>
+            <input type="date" name="fechaPago_1" id="fechaPago_1" required><br>
+
+          </div>
+        </div>
+         <!-- Botón para agregar un nuevo pago -->
+         <button type="button" id="agregarPago">Agregar Pago</button><br><br>
+      
+    <button onclick="nextStep(2)">Siguiente</button>
+  </div>
+
+  <div class="form-step" id="step2" style="display: none;">
+    <h2>FORMULARIO DE MATRICULA</h2>
+    <p>Datos Personales</p>
+    <label>Tipo de documento</label><br>
+    <select id="tipoDocumento" name="tipoDocumento" required>
+        <option value="">Seleccione</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select><br>
+
+    <label>Nro. documento</label><br>
+    <input type="text" name="NroDocumento" id="NroDocumento" 
+   maxlength="8" required 
+   oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+   title="Debe contener solo números, exactamente 8 dígitos.">
+<small>Debe contener solo números, exactamente 8 dígitos.</small><br>
+<label>Primer Apellido</label><br>
+        <input type="text" name="priApellido" id="priApellido" required><br>
+
+        <label>Segundo Apellido</label><br>
+        <input type="text" name="segApellido" id="segApellido" required><br>
+
+        <label>Nombres</label><br>
+        <input type="text" name="nombres" id="nombres" required><br>
+
+        <label>Estado civil</label><br>
+        <select id="estadoCivil" name="estadoCivil" required>
+            <option value="">Seleccione</option>
+            <option value="SOLTERO(A)">SOLTERO(A)</option>
+            <option value="CASADO(A)">CASADO(A)</option>
+            <option value="VIUDO(A)">VIUDO(A)</option>
+            <option value="DIVORCIADO(A)">DIVORCIADO(A)</option>
+        </select><br>
+
+        <label>Sexo</label><br>
+        <select id="Sexo" name="Sexo" required>
+            <option value="">Seleccione</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select><br>
+
+        <label>Nro. de Ubigeo</label><br>
+        <input type="text" name="ubigeo" id="ubigeo"  required 
+       oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+       title="Debe contener solo números">
+<small>solo numeros</small><br>
+<img src="img/Screenshot_1.png"><br>
+
+        <label>Lugar de nacimiento</label><br>
+        <small><a href="https://www.reniec.gob.pe/Adherentes/jsp/ListaUbigeos.jsp" target="_blank">Buscar lugar de nacimiento</a></small><br>
+
+        <label>Departamento(Nac)</label><br>
+        <input type="text" name="departamento" id="departamento" required><br>
+
+        <label>Provincia(Nac)</label><br>
+        <input type="text" name="Provincia" id="Provincia" required><br>
+
+        <label>Distrito(Nac)</label><br>
+        <input type="text" name="Distrito" id="Distrito" required><br>
+
+        <label>Fecha de nacimiento</label><br>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento" required><br>
+
+        <label>Discapacidad</label><br>
+        <select id="Discapacidad" name="Discapacidad" required>
+            <option value="">Seleccione</option>
+            <option>SI</option>
+            <option>NO</option>
+        </select><br>
+
+        <label>Tipo de Discapacidad</label><br>
+        <select id="tipoDiscapacidad" name="tipoDiscapacidad" required>
+            <option value="">Seleccione</option>
+            <option>NINGUNA</option>
+            <option>DISCAPACIDAD FÍSICA</option>
+            <option>DISCAPACIDAD SENSORIAL</option>
+            <option>DISCAPACIDAD INTELECTUAL</option>
+            <option>DISCAPACIDAD PSÍQUICA</option>
+        </select><br>
+
+    <button onclick="nextStep(1)">Anterior</button>
+    <button onclick="nextStep(3)">Siguiente</button>
+  </div>
+
+  <div class="form-step" id="step3" style="display: none;">
+    <h2>FORMULARIO DE MATRICULA</h2>
+    <p>INFORMACION DE CONTACTO</p>
+
+    <label>Celular</label><br>
+<input type="text" name="celularCont" id="celularCont" 
+       maxlength="9" required 
+       oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+       title="Debe contener solo números, exactamente 8 dígitos.">
+<small>Debe contener solo números, 9 dígitos.</small><br>
+
+<label>Correo electronico</label><br>
+<input type="text" name="correo" id="correoCont" required><br>
+
+<label>Direccion Actual</label><br>
+<input type="text" name="direccion" id="direccionCont" required><br>
+
+<label>Nro. Ubigeo(Dir.Act)</label><br>
+<input type="text" name="ubiDireccion" id="ubiDireccionCont" required
+oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+       title="Debe contener solo números.">
+<small>Debe contener solo números.</small><br>
+
+<h5>INFORMACION DE APODERADO Y/O CONTACTO DE EMERGENCIA</h5>
+
+<label>Nombre(Contacto de Emergencia)</label><br>
+<input type="text" name="nombreContacto" id="nombreContacto"><br>
+
+<label>Celular(Contacto de Emergencia)</label><br>
+<input type="text" name="celularContacto" id="celularContacto" maxlength="9" required 
+       oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+       title="Debe contener solo números.">
+<small>Debe contener solo números, 9 dígitos.</small><br>
+
+    <button onclick="nextStep(2)">Anterior</button>
+    <button onclick="nextStep(4)">Siguiente</button>
+  </div>
+
+  <div class="form-step" id="step4" style="display: none;">
+    <h2>FORMULARIO DE MATRICULA</h2>
+    <p>Información Academica</p>
+
+    <label>Año de Egreso(Secundaria)</label><br>
+<input type="text" name="aEgreso" id="aEgreso" required 
+       oninput="this.value = this.value.replace(/[^0-9]/g, '');"><br>
+ 
+ <label>Código Modular(colegio)</label>
+ <br><input type="text" name="codigoModular" id="codigoModular" required
+ oninput="this.value = this.value.replace(/[^0-9]/g, '');"><br> 
+ <small><a href="http://escale.minedu.gob.pe/padron-de-iiee" target="_blank">Buscar lugar de nacimiento</a></small><br>
+ <a>(Paso 1), luego copie los números que aparecen en el apartado "CODIGO MODULAR" (paso 2) e ingréselos a continuación</a><br>
+ <img src="img/Screenshot_2.png" width="700" height="500"><br>  
+ 
+ <label>Nombre del Colegio</label><br>
+ <input type="text" name="nombreColegio" id="nombreColegio" required><br> 
+ 
+ <label>Tipo de Colegio</label> 
+ <select id="tipoColegio" name="tipoColegio" required>
+ <option>1</option>
+ <option>2</option>
+ </select><br>
+ 
+ <label>Departamento(colegio)</label><br>
+ <input type="text" name="departColegio" id="departColegio" required><br>
+ 
+ <label>Provincia(colegio)</label><br>
+ <input type="text" name="provinColegio" id="provinColegio" required><br>
+ 
+ <label>Distrito(colegio)</label><br>
+ <input type="text" name="distriColegio" id="distriColegio" required><br>
+ 
+ <label>Nro. Ubigeo(colegio)</label><br>
+ <input type="text" name="ubigeoColegio" id="ubigeoColegio" required
+ oninput="this.value = this.value.replace(/[^0-9]/g, '');"><br>
+ <br>
+
+    <button onclick="nextStep(3)">Anterior</button>
+    <button onclick="nextStep(5)">Siguiente</button>
+  </div>
+
+  <div class="form-step" id="step5" style="display: none;">
+    <h2>FORMULARIO DE MATRICULA</h2>
+    <p>Lengua e identidad Étnica</p>
+
+    <h5>LENGUA E IDENTIDAD ÉTNICA</h5>
+<label>Lengua materna</label><br>
+<select id="lenguaMaterna" name="lenguaMaterna" required>
+  <option value="CASTELLANO">CASTELLANO</option>
+  <option value="SHIPIBO-CONIBO">SHIPIBO-CONIBO</option>
+  <option value="BORA">BORA</option>
+  <option value="AIMARA">AIMARA</option>
+  <option value="INGLES">INGLES</option>
+  <option value="OTRA">OTRA</option>
+</select><br>
+
+<label>Etnia</label><br>
+<select id="Etnia" name="Etnia" required>
+  <option value="NINGUNA">NINGUNA</option>
+  <option value="SHIPIBO-CONIBO">SHIPIBO-CONIBO</option>
+  <option value="AGARUNA">AGARUNA</option>
+  <option value="YINE">YINE</option>
+  <option value="KICHWA">KICHWA</option>
+  <option value="OTRA">OTRA</option>
+</select>
+
+<h5>INFORMACIÓN DEL CEPREUNU</h5>
+<label>Modalidad</label><br>
+<select id="Modalidad" name="Modalidad" required>
+  <option value="ORDINARIO">ORDINARIO</option>
+  <option value="EXTRAORDINARIO O RESERVA">EXTRAORDINARIO O RESERVA</option>
+</select><br>
+
+<h5>Turno y carrera a estudiar</h5>
+<label>Turno</label><br>
+<select id="Turno" name="Turno" required>
+  <option value="MAÑANA">MAÑANA</option>
+  <option value="TARDE">TARDE</option>
+  <option value="NOCHE(VIRTUAL)">NOCHE(VIRTUAL)</option>
+</select><br>
+
+<label>Carrera Profesional</label><br>
+<select id="carrera" name="carrera" required>
+  <option value="ADMINISTRACIÓN">ADMINISTRACIÓN</option>
+  <option value="AGRONOMÍA">AGRONOMÍA</option>
+  <option value="CIENCIAS DE LA COMUNICACIÓN">CIENCIAS DE LA COMUNICACIÓN</option>
+  <option value="CONTABILIDAD">CONTABILIDAD</option>
+  <option value="DERECHO">DERECHO</option>
+  <option value="ECONOMÍA Y NEGOCIOS INTERNACIONALES">ECONOMÍA Y NEGOCIOS INTERNACIONALES</option>
+  <option value="EDUCACIÓN INICIAL">EDUCACIÓN INICIAL</option>
+  <option value="EDUCACIÓN PRIMARIA">EDUCACIÓN PRIMARIA</option>
+  <option value="EDUCACIÓN SECUNDARIA - ESPECIALIDAD CIENCIAS NATURALES Y MEDIO AMBIENTE">EDUCACIÓN SECUNDARIA - ESPECIALIDAD CIENCIAS NATURALES Y MEDIO AMBIENTE</option>
+  <option value="EDUCACIÓN SECUNDARIA - ESPECIALIDAD CIENCIAS SOCIALES Y EDUCACIÓN INTERCULTURAL">EDUCACIÓN SECUNDARIA - ESPECIALIDAD CIENCIAS SOCIALES Y EDUCACIÓN INTERCULTURAL</option>
+  <option value="EDUCACIÓN SECUNDARIA - ESPECIALIDAD IDIOMA INGLES">EDUCACIÓN SECUNDARIA - ESPECIALIDAD IDIOMA INGLES</option>
+  <option value="EDUCACIÓN SECUNDARIA - ESPECIALIDAD LENGUA Y LITERATURA">EDUCACIÓN SECUNDARIA - ESPECIALIDAD LENGUA Y LITERATURA</option>
+  <option value="EDUCACIÓN SECUNDARIA - ESPECIALIDAD MATEMÁTICA, FÍSICA E INFORMÁTICA">EDUCACIÓN SECUNDARIA - ESPECIALIDAD MATEMÁTICA, FÍSICA E INFORMÁTICA</option>
+  <option value="INGENIERÍA AGROINDUSTRIAL">INGENIERÍA AGROINDUSTRIAL</option>
+  <option value="INGENIERÍA AMBIENTAL">INGENIERÍA AMBIENTAL</option>
+  <option value="INGENIERÍA CIVIL">INGENIERÍA CIVIL</option>
+  <option value="INGENIERÍA DE SISTEMAS">INGENIERÍA DE SISTEMAS</option>
+  <option value="INGENIERÍA FORESTAL">INGENIERÍA FORESTAL</option>
+  <option value="ENFERMERÍA">ENFERMERÍA</option>
+  <option value="MEDICINA HUMANA">MEDICINA HUMANA</option>
+  <option value="PSICOLOGÍA">PSICOLOGÍA</option>
+</select><br>
+
+<label>Subir foto</label><br>
+<input type="file" id="foto" name="foto" accept="image/*" required><br>
+
+
+    <button onclick="nextStep(4)">Anterior</button>
+    <button onclick="submitForm()">Enviar</button>
+  </div>
+
+</form>
+
+  <script src="script.js"></script>
+</body>
+</html>
